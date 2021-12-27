@@ -8,10 +8,12 @@ workflow:
       when: always
       variables:
         COVERALLS_REPO_TOKEN: "$COVERALLS_REPO_TOKEN"
+        RAKULIB: "./lib"
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
       when: always
       variables:
         COVERALLS_REPO_TOKEN: "$COVERALLS_REPO_TOKEN"
+        RAKULIB: "./lib"
     - when: never
 
 .script: &script
