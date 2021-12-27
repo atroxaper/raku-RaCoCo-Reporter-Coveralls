@@ -16,16 +16,10 @@ workflow:
 
 .script: &script
   - raku --version
+  - apk add openssl-dev
   - zef install --/test App::Prove6
   - zef install --/test --deps-only .
   - racoco --reporter=coveralls
-
-test:
-  image: "rakuland/raku:${RAKU_VERSION}"
-  parallel:
-    matrix:
-      - RAKU_VERSION: [ '2021.10' ]
-  script: *script
 
 coverage:
   image: rakuland/raku:latest
