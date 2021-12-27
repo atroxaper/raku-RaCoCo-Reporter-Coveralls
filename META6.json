@@ -8,7 +8,7 @@
   ],
   "auth": "zef:atroxaper",
   "depends": [
-    "App::RaCoCo:ver<1.5+>:auth<zef:atroxaper>:ver<1>",
+    "App::RaCoCo:ver<1.5+>:auth<zef:atroxaper>:api<1>",
     "Digest:ver<0.*>:auth<Lucien Grondin>",
     "HTTP::Tiny:ver<0.*>:auth<zef:jjatria>",
     "IO::Socket::SSL:ver<0.0.*>:auth<github:sergot>"
@@ -16,14 +16,14 @@
   "build-depends": [],
   "test-depends": [],
   "provides": {
+    "App::Racoco::Report::ReporterCoveralls": "lib/App/Racoco/Report/ReporterCoveralls.rakumod",
     "App::Racoco::Report::ReporterCoveralls::CI": "lib/App/Racoco/Report/ReporterCoveralls/CI.pm6",
     "App::Racoco::Report::ReporterCoveralls::Executor": "lib/App/Racoco/Report/ReporterCoveralls/Executor.pm6",
     "App::Racoco::Report::ReporterCoveralls::Externals": "lib/App/Racoco/Report/ReporterCoveralls/Externals.pm6",
-    "App::Racoco::Report::ReporterCoveralls::Factory": "lib/App/Racoco/Report/ReporterCoveralls/Factory.rakumod"
-    "App::Racoco::Report::ReporterCoveralls::Git": "lib/App/Racoco/Report/ReporterCoveralls/Git.rakumod"
-    "App::Racoco::Report::ReporterCoveralls::MD5": "lib/App/Racoco/Report/ReporterCoveralls/MD5.rakumod"
+    "App::Racoco::Report::ReporterCoveralls::Factory": "lib/App/Racoco/Report/ReporterCoveralls/Factory.rakumod",
+    "App::Racoco::Report::ReporterCoveralls::Git": "lib/App/Racoco/Report/ReporterCoveralls/Git.rakumod",
+    "App::Racoco::Report::ReporterCoveralls::MD5": "lib/App/Racoco/Report/ReporterCoveralls/MD5.rakumod",
     "App::Racoco::Report::ReporterCoveralls::Transport": "lib/App/Racoco/Report/ReporterCoveralls/Transport.rakumod"
-    "App::Racoco::Report::ReporterCoveralls": "lib/App/Racoco/Report/ReporterCoveralls.rakumod"
   },
   "resources": [],
   "license": "Artistic-2.0",
@@ -33,5 +33,5 @@
     "RACOCO"
   ],
   "api": "1",
-  "source-url": "https://github.com/atroxaper/raku-RaCoCo-Reporter-Coveralls"
+  "source-url": "git@github.com:atroxaper/raku-RaCoCo-Reporter-Coveralls.git"
 }
