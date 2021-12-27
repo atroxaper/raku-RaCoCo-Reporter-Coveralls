@@ -1,0 +1,77 @@
+use Test;
+use lib 'lib';
+use lib 't/lib';
+use App::Racoco::Report::ReporterCoveralls;
+use App::Racoco::Report::ReporterCoveralls::Externals :data;
+use Fixture;
+use Mocks;
+
+plan 1;
+
+%*ENV{'COVERALLS_REPO_TOKEN'} = 'repo-token';
+%*ENV{'COVERALLS_SERVICE_NAME'} = 'service-name';
+%*ENV{'COVERALLS_SERVICE_NUMBER'} = '123';
+%*ENV{'COVERALLS_SERVICE_JOB_ID'} = '321';
+%*ENV{'CI_PULL_REQUEST'} = '12321';
+%*ENV{'GIT_ID'} = 'hashcode';
+%*ENV{'GIT_AUTHOR_NAME'} = 'author';
+%*ENV{'GIT_AUTHOR_EMAIL'} = 'author_email';
+%*ENV{'GIT_COMMITTER_NAME'} = 'committer';
+%*ENV{'GIT_COMMITTER_EMAIL'} = 'committer_email';
+%*ENV{'GIT_MESSAGE'} = 'message';
+%*ENV{'GIT_BRANCH'} = 'branch';
+%*ENV{'GIT_REMOTE'} = 'origin';
+%*ENV{'GIT_URL'} = 'origin.git';
+
+my $transport = Mocks::TransportMock.new;
+my $*create-transport = $transport;
+my $data = create-data(
+	coverable => ('Module1.rakumod', set(3, 4), 'Module2.rakumod', set(3)).Map,
+	covered => ('Module1.rakumod', bag(3), 'Module2.rakumod', bag(3)).Map
+);
+my $lib = 't-resources/test-modules/'.IO;
+
+my ReporterCoveralls $coveralls = ReporterCoveralls.new;
+$coveralls.do(:$lib, :$data, properties => (class :: { method property($key) { %*ENV{$key} } }).new);
+
+is $transport.sended,
+q:to/END/.trim, 'make json ok';
+{
+"repo_token":"repo-token",
+"service_name":"service-name",
+"service_number":"123",
+"service_job_id":"321",
+"service_pull_request":"12321",
+"source_files": [
+	{
+"name":"test-modules/Module1.rakumod",
+"source_digest":"46825b98d27e64057eeaf06057641d0c",
+"coverage":[null,null,1,0,null]
+},
+{
+"name":"test-modules/Module2.rakumod",
+"source_digest":"fdbfbcd3d37d0fedb6e9fcdada5ae3d0",
+"coverage":[null,null,1]
+}
+],
+"git": {
+	"head":{
+		"id":"hashcode",
+		"author_name":"author",
+		"author_email":"author_email",
+		"committer_name":"committer",
+		"committer_email":"committer_email",
+		"message":"message"
+	},
+	"branch":"branch",
+	"remotes": [
+		{
+			"name":"origin",
+			"url": "origin.git"
+		}
+	]
+}
+}
+END
+
+done-testing

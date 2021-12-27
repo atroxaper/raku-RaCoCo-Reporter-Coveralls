@@ -1,6 +1,6 @@
 {
   "name": "App::Racoco::Report::ReporterCoveralls",
-  "description": "RaCoCo reporter for Coverall.io service",
+  "description": "RaCoCo reporter for Coveralls.io service",
   "version": "1.3.1",
   "perl": "6.d",
   "authors": [
@@ -8,25 +8,26 @@
   ],
   "auth": "zef:atroxaper",
   "depends": [
-    "App::RaCoCo:ver<1.5+>",
-    "Digest::MD5:ver<0.05+>",
-    "HTTP::Tiny:ver<0.1.8+>"
+    "App::RaCoCo:ver<1.5+>:auth<zef:atroxaper>:ver<1>",
+    "Digest:ver<0.*>:auth<Lucien Grondin>",
+    "HTTP::Tiny:ver<0.*>:auth<zef:jjatria>",
+    "IO::Socket::SSL:ver<0.0.*>:auth<github:sergot>"
   ],
   "build-depends": [],
   "test-depends": [],
   "provides": {
-    "App::Racoco::Report::ReporterCoveralls": "lib/App/Racoco/Report/ReporterCoveralls.rakumod",
-    "App::Racoco::Report::ReporterCoveralls::Factory": "lib/App/Racoco/Report/ReporterCoveralls/Factory.pm6",
-    "App::Racoco::Report::ReporterCoveralls::MD5": "lib/App/Racoco/Report/ReporterCoveralls/MD5.pm6",
-    "App::Racoco::Report::ReporterCoveralls::MD5Digest": "lib/App/Racoco/Report/ReporterCoveralls/MD5Digest.pm6",
-    "App::Racoco::Report::ReporterCoveralls::Postman": "lib/App/Racoco/Report/ReporterCoveralls/Postman.pm6",
-    "App::Racoco::Report::ReporterCoveralls::Transport": "lib/App/Racoco/Report/ReporterCoveralls/Transport.pm6",
-    "App::Racoco::Report::ReporterCoveralls::TransportTinyHTTP": "lib/App/Racoco/Report/ReporterCoveralls/TransportTinyHTTP.pm6"
+    "App::Racoco::Report::ReporterCoveralls::CI": "lib/App/Racoco/Report/ReporterCoveralls/CI.pm6",
+    "App::Racoco::Report::ReporterCoveralls::Executor": "lib/App/Racoco/Report/ReporterCoveralls/Executor.pm6",
+    "App::Racoco::Report::ReporterCoveralls::Externals": "lib/App/Racoco/Report/ReporterCoveralls/Externals.pm6",
+    "App::Racoco::Report::ReporterCoveralls::Transport": "lib/App/Racoco/Report/ReporterCoveralls/Transport.rakumod"
   },
   "resources": [],
   "license": "Artistic-2.0",
   "tags": [
-    "COVERAGE"
+    "COVERAGE",
+    "COVERALLS",
+    "RACOCO"
   ],
-  "source-url": "Write me!"
+  "api": "1",
+  "source-url": "https://github.com/atroxaper/raku-RaCoCo-Reporter-Coveralls"
 }
