@@ -9,8 +9,8 @@
   "auth": "zef:atroxaper",
   "depends": [
     "App::RaCoCo:ver<1.5+>:auth<zef:atroxaper>:api<1>",
-    "Digest:ver<0.*>:auth<github:grondilu>",
-    "HTTP::Tiny:ver<0.*>:auth<zef:jjatria>",
+    "Digest:ver<0.*.*>",
+    "HTTP::Tiny:ver<0.*.*>:auth<zef:jjatria>",
     "IO::Socket::SSL:ver<0.0.*>:auth<github:sergot>"
   ],
   "build-depends": [],
