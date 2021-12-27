@@ -1,7 +1,7 @@
 use App::Racoco::Report::ReporterCoveralls::CI;
 use App::Racoco::Report::ReporterCoveralls::MD5;
-use App::Racoco::Report::ReporterCoveralls::Git;
 use App::Racoco::Report::ReporterCoveralls::Factory;
+use App::Racoco::Report::ReporterCoveralls::Transport;
 use App::Racoco::Report::ReporterCoveralls::Externals :properties, :reporter;
 
 unit class App::Racoco::Report::ReporterCoveralls does MyReporter is export;
