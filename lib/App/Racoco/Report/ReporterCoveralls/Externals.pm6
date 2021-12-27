@@ -1,4 +1,4 @@
-use Digest:ver<0.*>:auth<Lucien Grondin>;
+use Digest:ver<0.*>:auth<github:grondilu>;
 use HTTP::Tiny:ver<0.*>:auth<zef:jjatria>;
 use App::Racoco::RunProc:ver<1.5+>:auth<zef:atroxaper>:ver<1>;
 use App::Racoco::Report::Data:ver<1.5+>:auth<zef:atroxaper>:ver<1>;
