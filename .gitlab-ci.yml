@@ -1,0 +1,35 @@
+variables:
+  ONLINE_TESTING: 1
+
+# Only run on merge requests or changes to the default branch
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: always
+      variables:
+        COVERALLS_REPO_TOKEN: "$COVERALLS_REPO_TOKEN"
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: always
+      variables:
+        COVERALLS_REPO_TOKEN: "$COVERALLS_REPO_TOKEN"
+    - when: never
+
+.script: &script
+  - raku --version
+  - zef install --/test App::Prove6
+  - zef install --/test --deps-only .
+  - racoco --reporter=coveralls
+
+test:
+  image: "rakuland/raku:${RAKU_VERSION}"
+  parallel:
+    matrix:
+      - RAKU_VERSION: [ '2021.10' ]
+  script: *script
+
+coverage:
+  image: rakuland/raku:latest
+  artifacts:
+    paths:
+      - public
+  script: *script
