@@ -1,6 +1,7 @@
 [![Ubuntu](https://github.com/atroxaper/raku-RaCoCo-Reporter-Coveralls/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/atroxaper/raku-RaCoCo-Reporter-Coveralls/actions/workflows/ubuntu.yml)
 [![MacOS](https://github.com/atroxaper/raku-RaCoCo-Reporter-Coveralls/actions/workflows/macos.yml/badge.svg)](https://github.com/atroxaper/raku-RaCoCo-Reporter-Coveralls/actions/workflows/macos.yml)
 [![Windows](https://github.com/atroxaper/raku-RaCoCo-Reporter-Coveralls/actions/workflows/windows.yml/badge.svg)](https://github.com/atroxaper/raku-RaCoCo-Reporter-Coveralls/actions/workflows/windows.yml)
+[![Coverage Status](https://coveralls.io/repos/github/atroxaper/raku-RaCoCo-Reporter-Coveralls/badge.svg?branch=master)](https://coveralls.io/github/atroxaper/raku-RaCoCo-Reporter-Coveralls?branch=master)
 
 # NAME
 
