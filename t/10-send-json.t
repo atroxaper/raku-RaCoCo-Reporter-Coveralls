@@ -23,6 +23,9 @@ plan 1;
 %*ENV{'GIT_REMOTE'} = 'origin';
 %*ENV{'GIT_URL'} = 'origin.git';
 
+%*ENV{'GITHUB_ACTIONS'}:delete;
+%*ENV{'GITLAB_CI'}:delete;
+
 my $transport = Mocks::TransportMock.new;
 my $*create-transport = $transport;
 my $data = create-data(
