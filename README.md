@@ -15,13 +15,13 @@ Generally, the reporter is for using on a CI like GitHub Actions or so. If you w
 
 To use the reporter in GitHub Actions you need:
 1. Add the secret environment variable for your repository with a name like `COVERALLS_REPO_TOKEN` and value equals the `repository token`. To do so go to YourRepoSettings -> Secrets -> New repository secret;
-2. Add installation step in your workflow.yaml file:
-```yaml
+2. Add installation step in your workflow.yml file:
+```yml
   - name: Install Coveralls Reporter
     run: zef install --/test App::Racoco::Report::ReporterCoveralls
 ```
-2. Add `--reporter=coveralls` to RaCoCo run in your workflow.yaml file. Also, you need to add `COVERALLS_REPO_TOKEN` environment variable:
-```yaml
+2. Add `--reporter=coveralls` to RaCoCo run in your workflow.yml file. Also, you need to add `COVERALLS_REPO_TOKEN` environment variable:
+```yml
   - name: Run RaCoCo
     run: racoco --reporter=coveralls
     env:
@@ -29,6 +29,22 @@ To use the reporter in GitHub Actions you need:
 ```
 
 ## GitLab Example
+
+To use the reporter in GitLab Pipelines you need:
+1. Add the secret environment variable for your repository with a name like `COVERALLS_REPO_TOKEN` and value equals the `repository token`. To do so go to YourRepoSettings -> CI/CD -> Variables -> Expand -> Add variable;
+2. Add installation step in your .gitlab-ci.yml file:
+```yml
+  zef install --/test App::Racoco::Report::ReporterCoveralls
+```
+2. Add `--reporter=coveralls` to RaCoCo run in your .gitlab-ci.yml file. Also, you need to add `COVERALLS_REPO_TOKEN` environment variable:
+```yml
+workflow:
+[...]
+  variables:
+        COVERALLS_REPO_TOKEN: "$COVERALLS_REPO_TOKEN"
+[...]
+  racoco --reporter=coveralls
+```
 
 # AUTHOR
 
