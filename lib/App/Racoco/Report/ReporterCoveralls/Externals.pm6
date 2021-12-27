@@ -1,8 +1,8 @@
-use Digest;
-use HTTP::Tiny;
-use App::Racoco::RunProc;
-use App::Racoco::Report::Data;
-use App::Racoco::Report::Reporter;
+use Digest:ver<0.*>:auth<Lucien Grondin>;
+use HTTP::Tiny:ver<0.*>:auth<zef:jjatria>;
+use App::Racoco::RunProc:ver<1.5+>:auth<zef:atroxaper>:ver<1>;
+use App::Racoco::Report::Data:ver<1.5+>:auth<zef:atroxaper>:ver<1>;
+use App::Racoco::Report::Reporter:ver<1.5+>:auth<zef:atroxaper>:ver<1>;
 
 unit module App::Racoco::Report::ReporterCoveralls::Externals;
 
