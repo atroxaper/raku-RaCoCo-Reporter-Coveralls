@@ -27,7 +27,9 @@ our role MyReporter does Reporter is export(:reporter) {}
 our class Properties is export(:properties) {
 	has $.properties is required;
 	method get(*@keys) {
-		[//] ($!properties.property($_) for @keys);
+		my $value = [//] ($!properties.property($_) for @keys);
+		return $value without $value;
+		$value.trim.lines.grep(*.chars > 0).join(' ');
 	}
 }
 
