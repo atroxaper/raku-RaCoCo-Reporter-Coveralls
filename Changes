@@ -1,6 +1,6 @@
 Version history:
 
-2.0.1		2023-02-24	'RaCoCo api version 2 support'
+2.0.2		2023-02-24	'RaCoCo api version 2 support'
 	- Add support of RaCoCo api version 2
 	- Change HTTP::Tiny in favor of HTTP::UserAgent
 

@@ -1,7 +1,7 @@
 {
   "name": "App::Racoco::Report::ReporterCoveralls",
   "description": "RaCoCo reporter for Coveralls.io service",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "perl": "6.d",
   "authors": [
     "Mikhail Khorkov"
