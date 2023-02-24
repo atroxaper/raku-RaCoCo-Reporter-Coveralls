@@ -15,7 +15,7 @@ our sub run-context() is export(:run-and-get-out) {
 }
 
 our sub run-and-get-out($context, $command) is export(:run-and-get-out) {
-	autorun(proc => $context, :out, $command)()
+	autorun(proc => $context, :out, $command)().trim;
 }
 
 our sub send-post(Str :$uri, IO::Path :$file) is export(:http) {
