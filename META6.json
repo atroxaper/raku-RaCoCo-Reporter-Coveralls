@@ -10,7 +10,7 @@
   "depends": [
     "App::RaCoCo:ver<2.*.*>:auth<zef:atroxaper>:api<2>",
     "Digest:ver<0.*.*>:auth<zef:grondilu>",
-    "HTTP::Tiny:ver<0.*.*>:auth<zef:jjatria>",
+    "HTTP::UserAgent:ver<1.*.*>:auth<github:sergot>",
     "IO::Socket::SSL:ver<0.0.*>:auth<github:sergot>"
   ],
   "build-depends": [],

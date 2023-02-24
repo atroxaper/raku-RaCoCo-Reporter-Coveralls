@@ -7,20 +7,16 @@ has $.uri = "https://coveralls.io/api/v1/jobs";
 
 my class FakePath is IO::Path {
 	has $.content;
-	method slurp(|c) { $!content.encode }
+	method slurp(|c) { $!content }
 	method basename(|c) { 'json_file' }
 	method set($content) { $!content = $content; self }
 }
 
 method send(Str:D $obj, :$uri --> Str) {
-
-say '+++++';
-say $obj;
-say '-----';
 	my $response = send-post(uri => $uri // $!uri, file => FakePath.new($*CWD).set($obj));
 
-	my $content = $response<content>.decode;
-	fail $response<status> ~ "$?NL" ~ $content unless $response<success>;
+	fail $response.status-line unless $response.is-success;
+	my $content = $response.content;
 	self.parse-job-url($content)
 }
 

@@ -1,5 +1,5 @@
 use Digest::MD5:ver<0.*.*>:auth<zef:grondilu>;
-use HTTP::Tiny:ver<0.*.*>:auth<zef:jjatria>;
+use HTTP::UserAgent:ver<1.*.*>:auth<github:sergot>;
 use App::Racoco::RunProc:ver<2.*.*>:auth<zef:atroxaper>:ver<2>;
 use App::Racoco::Report::Data:ver<2.*.*>:auth<zef:atroxaper>:ver<2>;
 use App::Racoco::Report::Reporter:ver<2.*.*>:auth<zef:atroxaper>:ver<2>;
@@ -19,7 +19,11 @@ our sub run-and-get-out($context, $command) is export(:run-and-get-out) {
 }
 
 our sub send-post(Str :$uri, IO::Path :$file) is export(:http) {
-	HTTP::Tiny.new.post: $uri, content => %(json_file => $file)
+	HTTP::UserAgent.new.post(
+		$uri,
+		%(json_file => [$file]),
+		Content-Type => 'multipart/form-data'
+	)
 }
 
 our role MyReporter does Reporter is export(:reporter) {}
