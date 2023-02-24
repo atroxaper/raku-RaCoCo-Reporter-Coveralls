@@ -1,13 +1,13 @@
-use Digest:ver<0.*.*>;
+use Digest::MD5:ver<0.*.*>:auth<zef:grondilu>;
 use HTTP::Tiny:ver<0.*.*>:auth<zef:jjatria>;
-use App::Racoco::RunProc:ver<1.5+>:auth<zef:atroxaper>:ver<1>;
-use App::Racoco::Report::Data:ver<1.5+>:auth<zef:atroxaper>:ver<1>;
-use App::Racoco::Report::Reporter:ver<1.5+>:auth<zef:atroxaper>:ver<1>;
+use App::Racoco::RunProc:ver<2.*.*>:auth<zef:atroxaper>:ver<2>;
+use App::Racoco::Report::Data:ver<2.*.*>:auth<zef:atroxaper>:ver<2>;
+use App::Racoco::Report::Reporter:ver<2.*.*>:auth<zef:atroxaper>:ver<2>;
 
 unit module App::Racoco::Report::ReporterCoveralls::Externals;
 
 our sub md5(|c) is export(:md5) {
-	Digest::EXPORT::DEFAULT::md5(|c)
+	Digest::MD5::EXPORT::DEFAULT::md5(|c)
 }
 
 our sub run-context() is export(:run-and-get-out) {
@@ -25,9 +25,9 @@ our sub send-post(Str :$uri, IO::Path :$file) is export(:http) {
 our role MyReporter does Reporter is export(:reporter) {}
 
 our class Properties is export(:properties) {
-	has $.properties is required;
+	has $.config is required;
 	method get(*@keys) {
-		my $value = [//] ($!properties.property($_) for @keys);
+		my $value = [//] ($!config.get($_) for @keys);
 		return $value without $value;
 		$value.trim.lines.grep(*.chars > 0).join(' ');
 	}

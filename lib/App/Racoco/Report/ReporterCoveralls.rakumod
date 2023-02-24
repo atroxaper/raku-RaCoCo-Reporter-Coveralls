@@ -9,8 +9,9 @@ unit class App::Racoco::Report::ReporterCoveralls does MyReporter is export;
 has MD5 $!md5 = Factory::create-md5();
 has Transport $!transport = Factory::create-transport;
 
-method do(:$lib, :$data, :$properties) {
-	my $ci = self.ci-environment(p => Properties.new(:$properties));
+method do(:$paths, :$data, :$config) {
+	my $lib = $paths.lib;
+	my $ci = self.ci-environment(p => Properties.new(:$config));
 	my $json = self.make-json(:$lib, :$data, :$ci);
 	my $job-url = $!transport.send($json);
 	say 'Coveralls job: ', $job-url;

@@ -1,15 +1,15 @@
 {
   "name": "App::Racoco::Report::ReporterCoveralls",
   "description": "RaCoCo reporter for Coveralls.io service",
-  "version": "1.3.1",
+  "version": "2.0.1",
   "perl": "6.d",
   "authors": [
     "Mikhail Khorkov"
   ],
   "auth": "zef:atroxaper",
   "depends": [
-    "App::RaCoCo:ver<1.5+>:auth<zef:atroxaper>:api<1>",
-    "Digest:ver<0.*.*>",
+    "App::RaCoCo:ver<2.*.*>:auth<zef:atroxaper>:api<2>",
+    "Digest:ver<0.*.*>:auth<zef:grondilu>",
     "HTTP::Tiny:ver<0.*.*>:auth<zef:jjatria>",
     "IO::Socket::SSL:ver<0.0.*>:auth<github:sergot>"
   ],
@@ -32,6 +32,6 @@
     "COVERALLS",
     "RACOCO"
   ],
-  "api": "1",
+  "api": "2",
   "source-url": "git@github.com:atroxaper/raku-RaCoCo-Reporter-Coveralls.git"
 }

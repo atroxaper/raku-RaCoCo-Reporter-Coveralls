@@ -35,7 +35,11 @@ my $data = create-data(
 my $lib = 't-resources/test-modules/'.IO;
 
 my ReporterCoveralls $coveralls = ReporterCoveralls.new;
-$coveralls.do(:$lib, :$data, properties => (class :: { method property($key) { %*ENV{$key} } }).new);
+$coveralls.do(
+	paths => (class :: { method lib() { $lib } }).new,
+	:$data,
+	config => (class :: { method get($key) { %*ENV{$key} } }).new
+);
 
 is $transport.sended,
 q:to/END/.trim, 'make json ok';
