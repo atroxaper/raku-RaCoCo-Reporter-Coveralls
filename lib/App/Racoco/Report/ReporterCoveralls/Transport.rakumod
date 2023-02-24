@@ -13,6 +13,10 @@ my class FakePath is IO::Path {
 }
 
 method send(Str:D $obj, :$uri --> Str) {
+
+say '+++++';
+say $obj;
+say '-----';
 	my $response = send-post(uri => $uri // $!uri, file => FakePath.new($*CWD).set($obj));
 
 	my $content = $response<content>.decode;
